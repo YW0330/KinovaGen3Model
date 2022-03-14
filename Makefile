@@ -1,7 +1,7 @@
 ##
 # @file Makefile
 # @author YW0330
-# @date 2022.3.13
+# @date 2022.3.14
 # @brief 建置Kinova Gen3靜態函式庫的Makefile
 
 # Static Library 名稱
@@ -12,23 +12,23 @@ BUILD_DIR := build
 # cpp所屬資料夾
 SOURCE_DIR := src
 
-# 添加搜索路徑
-VPATH = src
+DIR := $(shell find ./lib/* -maxdepth 1 -type d)
+LIBOBJ = $(wildcard $(BUILD_DIR)/*.o)
 
-LIBSRC = $(wildcard $(SOURCE_DIR)/*.cpp)
-LIBOBJ = $(addprefix $(BUILD_DIR)/, $(patsubst %.cpp, %.o, $(notdir $(LIBSRC))))
+.PHONY: all
 
-CC = g++
-INC_DIR = -I./include
-CFLAG = -O1 -Wall $(INC_DIR)
+all:
+	@make deps -s
+	@make $(TARGET).a -s
+	@echo '$(TARGET).a is done.'
+
+deps:
+	@$(foreach dir, $(DIR), echo '===== Building obj file for $(notdir $(dir)) =====' && make -s -C $(dir) &&) echo 'All modules done!'
 
 $(TARGET).a: $(LIBOBJ)
 	@ar rcs $@ $^
 
-$(BUILD_DIR)/%.o: %.cpp
-	@mkdir -p $(BUILD_DIR)
-	@$(CC) $(CFLAG) -c $< -o $@
-
 .PHONY: clean
 clean:
 	@rm -rf $(BUILD_DIR) $(TARGET).a
+

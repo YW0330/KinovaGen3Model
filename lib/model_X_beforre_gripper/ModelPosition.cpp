@@ -44,7 +44,7 @@ ModelPosition::~ModelPosition()
 // Return Type  : void
 //
 void ModelPosition::model_X_beforre_gripper(double q1, double q2, double q3,
-  double q4, double q5, double q6, double, double Pbgripper[3])
+                                            double q4, double q5, double q6, double, double Pbgripper[3])
 {
   double Pbgripper_tmp;
   double b_Pbgripper_tmp;
@@ -90,28 +90,30 @@ void ModelPosition::model_X_beforre_gripper(double q1, double q2, double q3,
   t14 *= t3;
   c_Pbgripper_tmp = t11 * t20;
   d_Pbgripper_tmp = t2 * t5 * t9;
-  Pbgripper[0] = ((((((t8 * -0.0118 - t13 * (t6 * (t5 * t20 + Pbgripper_tmp *
-    t11) + t12 * (b_Pbgripper_tmp + t14)) * 0.1674) - t7 * (c_Pbgripper_tmp -
-    d_Pbgripper_tmp) * 0.1674) + Pbgripper_tmp * 0.4208) - b_Pbgripper_tmp *
-                    0.0128) - t14 * 0.0128) - c_Pbgripper_tmp * 0.3143) +
-    d_Pbgripper_tmp * 0.3143;
+  Pbgripper[0] = ((((((t8 * -0.0118 - t13 * (t6 * (t5 * t20 + Pbgripper_tmp * t11) + t12 * (b_Pbgripper_tmp + t14)) * 0.1674) - t7 * (c_Pbgripper_tmp - d_Pbgripper_tmp) * 0.1674) + Pbgripper_tmp * 0.4208) - b_Pbgripper_tmp *
+                                                                                                                                                                                                                   0.0128) -
+                   t14 * 0.0128) -
+                  c_Pbgripper_tmp * 0.3143) +
+                 d_Pbgripper_tmp * 0.3143;
   Pbgripper_tmp = t2 * t4;
   b_Pbgripper_tmp = t8 * t9;
   t14 = t3 * t15;
   c_Pbgripper_tmp = t11 * t19;
   d_Pbgripper_tmp = t5 * t8 * t9;
-  Pbgripper[1] = ((((((t2 * -0.0118 - t13 * (t6 * (t5 * t19 - b_Pbgripper_tmp *
-    t11) + t12 * (Pbgripper_tmp - t14)) * 0.1674) - t7 * (c_Pbgripper_tmp +
-    d_Pbgripper_tmp) * 0.1674) - Pbgripper_tmp * 0.0128) - b_Pbgripper_tmp *
-                    0.4208) + t14 * 0.0128) - c_Pbgripper_tmp * 0.3143) -
-    d_Pbgripper_tmp * 0.3143;
+  Pbgripper[1] = ((((((t2 * -0.0118 - t13 * (t6 * (t5 * t19 - b_Pbgripper_tmp * t11) + t12 * (Pbgripper_tmp - t14)) * 0.1674) - t7 * (c_Pbgripper_tmp + d_Pbgripper_tmp) * 0.1674) - Pbgripper_tmp * 0.0128) - b_Pbgripper_tmp *
+                                                                                                                                                                                                                   0.4208) +
+                   t14 * 0.0128) -
+                  c_Pbgripper_tmp * 0.3143) -
+                 d_Pbgripper_tmp * 0.3143;
   Pbgripper_tmp = t3 * t5;
   b_Pbgripper_tmp = t9 * t10;
   t14 = t4 * t9 * t11;
-  Pbgripper[2] = (((((t3 * 0.4208 - t13 * (t6 * (t3 * t11 + t4 * t5 * t9) -
-    b_Pbgripper_tmp * t12) * 0.1674) + t7 * (Pbgripper_tmp - t14) * 0.1674) +
-                    Pbgripper_tmp * 0.3143) + b_Pbgripper_tmp * 0.0128) - t14 *
-                  0.3143) + 0.2848;
+  Pbgripper[2] = (((((t3 * 0.4208 - t13 * (t6 * (t3 * t11 + t4 * t5 * t9) - b_Pbgripper_tmp * t12) * 0.1674) + t7 * (Pbgripper_tmp - t14) * 0.1674) +
+                    Pbgripper_tmp * 0.3143) +
+                   b_Pbgripper_tmp * 0.0128) -
+                  t14 *
+                      0.3143) +
+                 0.2848;
 }
 
 //

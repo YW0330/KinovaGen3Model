@@ -4,8 +4,17 @@
 - 建置與Kinova Gen3相關靜態函式庫
 
 ## 使用方法
-- 將`*.cpp`放於`src`資料夾中
-- 將`*.h`放於`include`資料夾中
+- 將從MATLAB code generation出來的`{package}`直接放置於`lib`資料夾中
+    - 只需要保留`{package}`資料夾下的`*.h`與`*.cpp`
+- 修改`{package}`資料夾中的`rtwtypes.h`檔案
+    ```diff
+    - #include "tmwtypes.h"
+    + #include "../tmwtypes.h"
+    ```
+- 在`{package}`資料夾中的`makefile`檔案
+    ```makefile
+    include ../../g++.mk
+    ```
 - 建置靜態函式庫`KinovaGen3Model.a`
     ```shell
     $ make
