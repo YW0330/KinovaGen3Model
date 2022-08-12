@@ -6,19 +6,19 @@
 
 # 暫存資料夾路徑
 BUILD_DIR := ../../build
+# source code 資料夾
+SOURCE_DIR := ./lib
 
 LIBSRC = $(wildcard *.cpp)
 LIBOBJ = $(addprefix $(BUILD_DIR)/, $(patsubst %.cpp, %.o, $(LIBSRC)))
-LIBHEAD = $(wildcard *.h)
 
 default: $(LIBOBJ)
 
 CC = g++
-INC_DIR = \
-	-I./lib
-CFLAG = -O1 -Wall $(INC_DIR)
+INC_DIR = -I$(SOURCE_DIR) -I./lib
+CFLAG = -O1 -Wall 
 
 $(BUILD_DIR)/%.o: %.cpp
 	@mkdir -p $(BUILD_DIR)
-	$(CC) $(CFLAG) -c $< -o $@
+	$(CC) $(CFLAG) -c $< -o $@ $(INC_DIR)
 

@@ -2,21 +2,21 @@
 # @file Makefile
 # @author YW0330
 # @date 2022.3.14
-# @brief 建置Kinova Gen3靜態函式庫的Makefile
+# @brief 建置 Kinova Gen3 靜態函式庫的 Makefile
 
 # Static Library 名稱
-TARGET = KinovaGen3Model
+LIBARY_NAME ?= KinovaGen3Model
 
 # 暫存資料夾名稱
-BUILD_DIR := build
-# cpp所屬資料夾
-SOURCE_DIR := src
+BUILD_DIR := ./build
+# source code 資料夾
+SOURCE_DIR := ./lib
 
-DIR := $(shell find ./lib/* -maxdepth 1 -type d)
+DIR := $(shell find $(SOURCE_DIR)/* -maxdepth 1 -type d)
 LIBOBJ = $(wildcard $(BUILD_DIR)/*.o)
+TARGET = lib$(LIBARY_NAME)
 
 .PHONY: all
-
 all:
 	@make deps -s
 	@make $(TARGET).a -s
