@@ -17,7 +17,7 @@ LIBOBJ = $(wildcard $(BUILD_DIR)/*.o)
 TARGET = lib$(LIBARY_NAME)
 
 .PHONY: all
-all:
+all: clean
 	@make deps -s
 	@make $(TARGET).a -s
 	@echo '$(TARGET).a is done.'
