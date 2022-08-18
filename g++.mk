@@ -15,10 +15,9 @@ LIBOBJ = $(addprefix $(BUILD_DIR)/, $(patsubst %.cpp, %.o, $(LIBSRC)))
 default: $(LIBOBJ)
 
 CC = g++
-INC_DIR = -I$(SOURCE_DIR) -I./lib
+INC_DIR = -I$(SOURCE_DIR)
 CFLAG = -O1 -Wall 
 
 $(BUILD_DIR)/%.o: %.cpp
-	@mkdir -p $(BUILD_DIR)
 	$(CC) $(CFLAG) -c $< -o $@ $(INC_DIR)
 

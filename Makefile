@@ -18,6 +18,7 @@ TARGET = lib$(LIBARY_NAME)
 
 .PHONY: all
 all: clean
+	@mkdir -p $(BUILD_DIR)
 	@make deps -s
 	@make $(TARGET).a -s
 	@echo '$(TARGET).a is done.'
