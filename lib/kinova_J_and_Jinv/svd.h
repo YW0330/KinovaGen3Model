@@ -2,26 +2,27 @@
 // Academic License - for use in teaching, academic research, and meeting
 // course requirements at degree granting institutions only.  Not for
 // government, commercial, or other organizational use.
-// File: kinova_J_terminate.h
+// File: svd.h
 //
-// MATLAB Coder version            : 5.2
-// C/C++ source code generated on  : 17-Aug-2022 23:54:32
+// MATLAB Coder version            : 4.3
+// C/C++ source code generated on  : 18-Aug-2022 17:03:06
 //
-
-#ifndef KINOVA_J_TERMINATE_H
-#define KINOVA_J_TERMINATE_H
+#ifndef SVD_H
+#define SVD_H
 
 // Include Files
-#include "rtwtypes.h"
 #include <cstddef>
 #include <cstdlib>
+#include "rtwtypes.h"
+#include "kinova_J_and_Jinv_types.h"
 
 // Function Declarations
-extern void kinova_J_terminate();
+extern void svd(const double A[42], double U[42], double s[6], double V[36]);
 
 #endif
+
 //
-// File trailer for kinova_J_terminate.h
+// File trailer for svd.h
 //
 // [EOF]
 //

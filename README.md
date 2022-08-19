@@ -8,7 +8,7 @@ MATLAB 版本： 2021a
 - 將 MATLAB 工作資料夾下的 `codegen/lib/<package>` 直接放置於本專案 `lib` 資料夾中
 - 事前準備工作
     ```shell
-    bash scripts/preparation.sh
+    $ bash scripts/preparation.sh
     ```
     包含以下動作：
     - 只需要保留 `<package>` 資料夾中的 `*.h` 與 `*.cpp`
