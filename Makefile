@@ -13,7 +13,8 @@ BUILD_DIR := ./build
 SOURCE_DIR := ./lib
 
 DIR := $(shell find $(SOURCE_DIR)/* -maxdepth 1 -type d)
-LIBOBJ = $(wildcard $(BUILD_DIR)/*.o)
+FIND_OBJS = $(wildcard $(BUILD_DIR)/$(dir)/*.o)
+LIBOBJ = $(foreach dir, $(notdir $(DIR)), $(FIND_OBJS))
 TARGET = lib$(LIBARY_NAME)
 
 .PHONY: all
@@ -32,4 +33,3 @@ $(TARGET).a: $(LIBOBJ)
 .PHONY: clean
 clean:
 	@rm -rf $(BUILD_DIR) $(TARGET).a
-
