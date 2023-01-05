@@ -4,6 +4,9 @@
 # @date 2022.3.14
 # @brief 建置 Kinova Gen3 靜態函式庫的 Makefile
 
+# 需要獨立建置的資料夾
+MODULE_IGNORED_DIR ?= kinova_FK_axisAngle
+
 # Static Library 名稱
 LIBARY_NAME ?= KinovaGen3Model
 
@@ -11,25 +14,33 @@ LIBARY_NAME ?= KinovaGen3Model
 BUILD_DIR := ./build
 # source code 資料夾
 SOURCE_DIR := ./lib
+# 發布資料夾名稱
+DIST_DIR := ./dist
 
-DIR := $(shell find $(SOURCE_DIR)/* -maxdepth 1 -type d)
+DIR = $(shell find $(SOURCE_DIR)/* -maxdepth 1 -type d)
+MODULES_INDEPEN = $(filter $(MODULE_IGNORED), $(DIR))
+MODULE_IGNORED = $(addprefix $(SOURCE_DIR)/,$(MODULE_IGNORED_DIR))
+MODULES = $(filter-out $(MODULE_IGNORED), $(DIR))
 FIND_OBJS = $(wildcard $(BUILD_DIR)/$(dir)/*.o)
-LIBOBJ = $(foreach dir, $(notdir $(DIR)), $(FIND_OBJS))
+OBJS = $(foreach dir, $(notdir $(MODULES)), $(FIND_OBJS))
 TARGET = lib$(LIBARY_NAME)
 
-.PHONY: all
 all: clean
-	@mkdir -p $(BUILD_DIR)
+	@mkdir -p $(BUILD_DIR) $(DIST_DIR)
 	@make deps -s
-	@make $(TARGET).a -s
+	@make $(DIST_DIR)/$(TARGET).a -s
 	@echo '$(TARGET).a is done.'
 
-deps:
-	@$(foreach dir, $(DIR), echo '===== Building obj file for $(notdir $(dir)) =====' && make -s -C $(dir) &&) echo 'All modules done!'
+indepen_lib: 
+	@$(foreach dir, $(MODULES_INDEPEN), echo '===== Building static library for $(notdir $(dir)) =====' && make library -s -C $(dir) &&) echo 'All static library done!'
 
-$(TARGET).a: $(LIBOBJ)
+deps:
+	@$(foreach dir, $(MODULES), echo '===== Building obj file for $(notdir $(dir)) =====' && make -s -C $(dir) &&) echo 'All modules done!'
+
+%.a: $(OBJS)
 	@ar rcs $@ $^
 
-.PHONY: clean
 clean:
-	@rm -rf $(BUILD_DIR) $(TARGET).a
+	@rm -rf $(BUILD_DIR) $(DIST_DIR)
+
+.PHONY: all deps clean

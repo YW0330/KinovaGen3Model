@@ -4,9 +4,9 @@
 MATLAB 版本： 2021a
 
 ## 使用方法
-- 使用 MATLAB code generation 產生 `source code`
+- 使用 MATLAB code generation 產生 `source code`，c++ function 形式
 - 將 MATLAB 工作資料夾下的 `codegen/lib/<package>` 直接放置於本專案 `lib` 資料夾中
-- 事前準備工作
+- 執行準備工作
     ```shell
     $ bash scripts/preparation.sh
     ```
@@ -23,6 +23,12 @@ MATLAB 版本： 2021a
     $ make LIBARY_NAME=<static libary name>
     ```
     - 預設名稱 `libKinovaGen3Model.a`
+- 建置獨立的靜態函式庫 `lib<directory name>.a`
+    ```shell
+    $ make indepen_lib
+    ```
+    - 可以排除 MATLAB 因為在不同資料夾中使用相同方法，造成 multipule defined 的問題
+    - 需要獨立製作成靜態函式庫的資料夾可以寫在 `MODULE_IGNORED_DIR` 變數之中
 - 清除專案
     ```shell
     $ make clean
