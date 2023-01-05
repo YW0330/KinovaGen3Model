@@ -23,12 +23,16 @@ MATLAB 版本： 2021a
     $ make LIBARY_NAME=<static libary name>
     ```
     - 預設名稱 `libKinovaGen3Model.a`
-- 建置獨立的靜態函式庫 `lib<directory name>.a`
+- 建置特定的靜態函式庫 `lib<directory name>.a`
     ```shell
-    $ make indepen_lib
+    $ make exclude
     ```
     - 可以排除 MATLAB 因為在不同資料夾中使用相同方法，造成 multipule defined 的問題
-    - 需要獨立製作成靜態函式庫的資料夾可以寫在 `MODULE_IGNORED_DIR` 變數之中
+    - 需要單獨製作成靜態函式庫的資料夾可以寫在 `MODULE_IGNORED_DIR` 變數之中
+- 建置所有模組的靜態函式庫 `lib<directory name>.a`
+    ```shell
+    $ make all
+    ```
 - 清除專案
     ```shell
     $ make clean
