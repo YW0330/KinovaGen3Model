@@ -23,7 +23,7 @@ default: $(LIBOBJS)
 library: $(LIB)
 
 CC := g++
-CFLAG = -Os -Wall 
+CFLAG = -Os -Wall -std=c++11
 CFLAG += -I$(SOURCE_DIR)
 
 # 建置單個模組的目標檔
