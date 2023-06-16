@@ -5,7 +5,7 @@
 //
 // rtwtypes.h
 //
-// Code generation for function 'kinova_psi_jointAngleLimits'
+// Code generation for function 'kinova_psi_jointAngleLimits_246'
 //
 
 #ifndef RTWTYPES_H
