@@ -4,6 +4,7 @@
 MATLAB 版本： 2021a
 
 ## 使用方法
+- Kinova Gen3 機械手臂相關 matlab 原始碼存放於 `matlab` 資料夾，包含運動學、動力學等
 - 使用 MATLAB code generation 產生 c++ 形式的 `source code` 
 - 將 MATLAB 工作資料夾下的 `codegen/lib/<package>` 直接放置於本專案 `lib` 資料夾中
 - 執行事前準備工作
@@ -27,7 +28,7 @@ MATLAB 版本： 2021a
     ```shell
     $ make exclude
     ```
-    - 排除 MATLAB 於不同資料夾使用相同名稱之方法，造成 multiple defined 的問題
+    - 解決 MATLAB 於不同資料夾使用相同名稱之方法，造成 multiple defined 的問題
     - 若需要單獨製作成靜態函式庫的 `<package>` 資料夾，請將 `<package>` 名稱填於本專案目錄下 `Makefile` 中的 `MODULE_IGNORED_DIR` 變數
 - 獨立建置所有 `<package>` 資料夾之靜態函式庫 `lib<directory name>.a`
     ```shell
